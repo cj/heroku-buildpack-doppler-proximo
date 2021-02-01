@@ -65,6 +65,8 @@ chmod +x $BUILD_DIR/doppler
 
 cd "$BUILD_DIR" || exit
 
+curl http://downloads.proximo.io/proximo-stacklet.tgz | tar xz
+
 DOPPLER_TOKEN=$(cat $ENV_DIR/DOPPLER_TOKEN)
 
-./doppler secrets download --token $DOPPLER_TOKEN --no-file --format env > .env
+./bin/proximo ./doppler secrets download --token $DOPPLER_TOKEN --no-file --format env > .env
